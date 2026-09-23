@@ -131,6 +131,34 @@ export const programmes: Programme[] = [
       { label: 'CHANGE REJECTIONS', value: '−28%' },
     ],
   },
+  {
+    number: '05',
+    title: 'IT Asset Logistics',
+    category: 'VENDOR MANAGEMENT / IT ASSET MANAGEMENT',
+    employer: 'Cognizant Technology Solutions',
+    description:
+      'Ran end-to-end vendor management for IT asset logistics: managed the vendor contracts, forecast budget utilisation for management, and coordinated Goods Receipt Note (GRN) closure so vendor payments were released on time.',
+    tags: ['Vendor Management', 'IT Asset Management', 'Contract Management', 'Budget Forecasting', 'Logistics'],
+    metrics: [
+      { label: 'TIMEFRAME', value: 'Feb 2022 – Sep 2022' },
+      { label: 'SCOPE', value: 'Contracts, logistics, GRN closure' },
+      { label: 'REPORTING', value: 'Budget forecasts to management' },
+    ],
+  },
+  {
+    number: '06',
+    title: 'Desktop Modernisation',
+    category: 'END-USER COMPUTING / HARDWARE REFRESH',
+    employer: 'BNY Mellon Technologies',
+    description:
+      "Recovered desktops from associates across every site of the organisation and replaced them with new laptops.",
+    tags: ['IT Asset Management', 'IT Operations', 'Hardware Refresh', 'Asset Recovery'],
+    metrics: [
+      { label: 'TIMEFRAME', value: 'Jul 2017 – Oct 2018' },
+      { label: 'SCOPE', value: 'All sites, all associates' },
+      { label: 'OUTCOME', value: 'Desktops replaced with laptops' },
+    ],
+  },
 ];
 
 export const skillGroups = [

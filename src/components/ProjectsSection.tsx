@@ -56,7 +56,7 @@ export const ProjectsSection: React.FC = () => {
             className="text-xs sm:text-sm font-light text-[#A8988B] max-w-sm mt-4 md:mt-0 leading-relaxed"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            Four programmes that show how I work: clear governance, tight scope control, and outcomes the business can measure.
+            Six programmes that show how I work: clear governance, tight scope control, and outcomes the business can measure.
           </p>
         </motion.div>
 
