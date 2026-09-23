@@ -1,4 +1,5 @@
 import { HeroSection } from './components/HeroSection';
+import { CertificationStrip } from './components/CertificationStrip';
 import { AboutSection } from './components/AboutSection';
 import { AchievementsSection } from './components/AchievementsSection';
 import { ProjectsSection } from './components/ProjectsSection';
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="w-full min-h-screen bg-black text-[#E8DFD8] selection:bg-[#cbb59d] selection:text-black">
       <HeroSection />
+      <CertificationStrip />
       <AboutSection />
       <AchievementsSection />
       <ProjectsSection />
