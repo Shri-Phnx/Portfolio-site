@@ -70,10 +70,13 @@ ok "Files copied to ${WEB_ROOT}"
 # ---------------------------------------------------------- 4. web server
 say "Step 4/6: Configuring Nginx"
 if [ ! -f "$NGINX_CONF" ]; then
+  # Only listen on IPv6 when the server supports it.
+  ipv6_listen=""
+  [ -f /proc/net/if_inet6 ] && ipv6_listen="listen [::]:80;"
   cat > "$NGINX_CONF" <<EOF
 server {
     listen 80;
-    listen [::]:80;
+    ${ipv6_listen}
     server_name ${DOMAIN} www.${DOMAIN};
 
     root ${WEB_ROOT};
@@ -110,7 +113,7 @@ fi
 
 # ------------------------------------------------------------- 5. DNS check
 say "Step 5/6: Checking the domain points to this server"
-resolve() { curl -s "https://dns.google/resolve?name=$1&type=A" | grep -oE '"data":"[0-9.]+"' | cut -d'"' -f4 | head -1; }
+resolve() { curl -s "https://dns.google/resolve?name=$1&type=A" | grep -oE '"data":"[0-9.]+"' | cut -d'"' -f4 | head -1 || true; }
 apex="$(resolve "$DOMAIN")"; www="$(resolve "www.$DOMAIN")"
 echo "    ${DOMAIN}     -> ${apex:-not set yet}"
 echo "    www.${DOMAIN} -> ${www:-not set yet}"
