@@ -13,7 +13,7 @@ set -euo pipefail
 DOMAIN="shrinivasramaprasad.site"
 SERVER_IP="72.60.100.108"
 REPO="https://github.com/Shri-Phnx/Portfolio-site.git"
-BRANCH="${BRANCH:-claude/epic-hopper-chfsbs}"
+BRANCH="${BRANCH:-main}"
 SRC_DIR="/opt/portfolio-site"
 WEB_ROOT="/opt/portfolio-site-www"
 NAME="portfolio-site"
