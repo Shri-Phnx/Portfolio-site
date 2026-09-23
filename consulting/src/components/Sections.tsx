@@ -125,7 +125,7 @@ export const Insights: React.FC = () => (
 export const Testimonials: React.FC = () =>
   testimonials.length === 0 ? null : (
     <Section>
-      <Heading eyebrow="06 / What Leaders Say" intro="From LinkedIn recommendations. Names withheld for confidentiality.">In Their Words</Heading>
+      <Heading eyebrow="06 / What Leaders Say" intro="Names withheld for confidentiality.">In Their Words</Heading>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {testimonials.map((t, i) => (
           <Card key={t.role + i} delay={i * 0.1}>
