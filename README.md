@@ -23,3 +23,13 @@ npm run build    # production build into dist/
 ```
 
 `dist/` is a plain static site. Any web server (Nginx, Apache, Hostinger) can serve it.
+
+## Publishing to the live server
+
+In Hostinger hPanel → VPS → Manage → **Web console**, run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Shri-Phnx/Portfolio-site/main/deploy/setup-vps-docker.sh | bash
+```
+
+It pulls the latest `main`, rebuilds, and serves it through the existing Traefik (n8n is untouched). Remove the site with `docker rm -f portfolio-site`.
