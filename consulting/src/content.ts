@@ -122,9 +122,25 @@ export const insights = {
   ],
 };
 
-// Real LinkedIn recommendations, shown without the recommender's name or
-// company. Leave empty to hide the section.
-export const testimonials: { quote: string; role: string }[] = [];
+// Real LinkedIn recommendations (excerpts, wording unchanged), shown without
+// the recommender's name or company. Leave empty to hide the section.
+export const testimonials: { quote: string; role: string }[] = [
+  {
+    quote:
+      "Shrinivas brings a relentless focus on operational excellence, ensuring services are not just delivered—but optimized, aligned with business goals, and continuously improved. … Whether it's leading complex transformations, mentoring teams, or architecting enterprise-grade systems, Shrinivas brings a visionary yet pragmatic approach.",
+    role: 'Senior Cyber Security & Service Delivery Leader · Former manager',
+  },
+  {
+    quote:
+      "Shrinivas brought a strong command of the domain, quickly grasping complex requirements and translating them into clear, actionable plans that moved teams forward. … We significantly reduced asset collection gaps by streamlining leaver PC recovery and identifying previously unknown PCs. … He's a thoughtful leader with a sharp eye for both strategy and execution.",
+    role: 'Senior Information Technology Leader · Client',
+  },
+  {
+    quote:
+      'Shrini is very methodical in his approach to work. He has applied his Six Sigma skill set to good use and both automated and improved a number of processes within the team.',
+    role: 'Head of IT Planning & Procurement, SVP · Former manager',
+  },
+];
 
 export const discovery = {
   headline: "Let's Work Together",
