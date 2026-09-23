@@ -63,7 +63,7 @@ export const CertificationStrip: React.FC = () => {
     <section
       id="certifications"
       aria-label="Certifications"
-      className="relative w-full bg-black overflow-hidden py-16 sm:py-20"
+      className="relative w-full bg-black overflow-hidden pt-16 sm:pt-20 pb-4"
     >
       <p
         className="text-center text-[11px] font-medium tracking-[0.35em] uppercase text-[#D4AF37] mb-8 px-6"
@@ -75,13 +75,13 @@ export const CertificationStrip: React.FC = () => {
       <div className="space-y-2">
         <Row
           items={certificationBadges.slice(0, half)}
-          tilt="-rotate-[1.5deg]"
+          tilt=""
           band="bg-gradient-to-r from-transparent via-[#D4AF37]/25 to-transparent"
         />
         <Row
           items={certificationBadges.slice(half)}
           reverse
-          tilt="rotate-[1.5deg]"
+          tilt=""
           band="bg-gradient-to-r from-transparent via-[#C99E5D]/20 to-transparent"
         />
       </div>
