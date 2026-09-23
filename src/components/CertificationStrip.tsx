@@ -18,20 +18,20 @@ const Tile: React.FC<{ badge: Badge }> = ({ badge }) => {
   return (
     <div
       title={badge.name}
-      className="shrink-0 mx-2.5 w-[168px] h-[96px] sm:w-[200px] sm:h-[112px] rounded-lg border border-[#8C6D4F]/40 bg-[#0E0C0A] flex items-center justify-center p-4 transition-colors duration-300 hover:border-[#D4AF37]"
+      className="shrink-0 mx-2.5 w-[150px] h-[120px] sm:w-[190px] sm:h-[150px] rounded-lg border-2 border-[#8C6D4F]/60 bg-white flex items-center justify-center p-2.5 sm:p-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-colors duration-300 hover:border-[#D4AF37]"
     >
       {src ? (
-        <img src={src} alt={badge.name} className="max-w-full max-h-full object-contain" loading="lazy" />
+        <img src={src} alt={badge.name} className="max-w-full max-h-full object-contain" />
       ) : (
         <div className="text-center">
           <span
-            className="block text-2xl sm:text-3xl text-[#F7E7C4] leading-none"
+            className="block text-2xl sm:text-3xl text-[#2A2118] leading-none"
             style={{ fontFamily: "'Bebas Neue', sans-serif" }}
           >
             {badge.short}
           </span>
           <span
-            className="block mt-1.5 text-[8.5px] font-medium tracking-[0.14em] uppercase text-[#A8988B] leading-snug"
+            className="block mt-1.5 text-[8.5px] font-medium tracking-[0.14em] uppercase text-[#6B5A48] leading-snug"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             {badge.name}

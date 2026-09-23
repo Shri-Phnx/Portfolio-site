@@ -269,16 +269,17 @@ export const certifications = [
 // Certification logo strip under the hero. `logo` is a file name inside
 // src/assets/certs/; tiles without a logo file show the short name instead.
 export const certificationBadges = [
-  { name: 'PRINCE2 Practitioner', short: 'PRINCE2', logo: 'prince2' },
+  { name: 'PRINCE2 Foundation & Practitioner', short: 'PRINCE2', logo: 'prince2' },
   { name: 'ITIL v4 Managing Professional', short: 'ITIL 4 MP', logo: 'itil' },
-  { name: 'Agile Scrum Master', short: 'ASM', logo: 'scrum-master' },
-  { name: 'Six Sigma Green Belt', short: 'Six Sigma GB', logo: 'six-sigma' },
-  { name: 'ISO 27001 Lead Auditor', short: 'ISO 27001 LA', logo: 'iso-27001' },
+  { name: 'ISO 27001 Lead Auditor', short: 'ISO 27001', logo: 'iso-27001' },
   { name: 'Certified Software Asset Manager', short: 'CSAM', logo: 'csam' },
   { name: 'Certified Hardware Asset Management Professional', short: 'CHAMP', logo: 'champ' },
-  { name: 'Flexera ITAM', short: 'Flexera', logo: 'flexera' },
-  { name: 'ServiceNow Fundamentals', short: 'ServiceNow', logo: 'servicenow' },
   { name: 'Google Cloud Digital Leader', short: 'Google Cloud', logo: 'google-cloud' },
+  { name: 'ServiceNow Fundamentals', short: 'ServiceNow', logo: 'servicenow' },
+  { name: 'EXIN Agile Scrum Master', short: 'ASM', logo: 'scrum-master' },
+  { name: 'Lean Six Sigma Green Belt', short: 'Six Sigma GB', logo: 'six-sigma' },
   { name: 'Generative AI Certification', short: 'Gen AI', logo: 'gen-ai' },
+  { name: 'Flexera ITAM', short: 'Flexera', logo: 'flexera' },
   { name: 'Certified Project Management, IIM Indore', short: 'IIM Indore', logo: 'iim-indore' },
+  { name: 'NLP Personal & Business Practitioner (Onefluencer)', short: 'NLP', logo: 'nlp' },
 ];
