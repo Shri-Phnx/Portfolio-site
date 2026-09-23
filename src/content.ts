@@ -30,7 +30,7 @@ export const heroStats = [
 // Professional summary, taken from the Master CV.
 export const summary = [
   'ITAM/ITSM Senior Program Manager and Service Delivery Leader with 15+ years of experience delivering large-scale IT transformations for global enterprises, with strong cloud transformation capability across the Azure ecosystem and operational excellence. Expertise in establishing governance frameworks, driving cross-functional team delivery, and implementing PMO structures that ensure compliance and audit readiness.',
-  'Demonstrated history of managing multi-million-dollar budgets, achieving high SLA/OLA compliance, and delivering cost savings through strategic risk management, stakeholder engagement, and process optimisation. Expert in Agile/Hybrid delivery methodologies (PMP, PRINCE2, Scrum), ServiceNow, and Azure ecosystems. Skilled at executive reporting, KPI tracking, and escalation management to ensure program success and strategic alignment. Exploring AI-driven automation and predictive analytics to enhance IT governance and service management outcomes.',
+  'Demonstrated history of managing programme budgets totalling $471K, achieving high SLA/OLA compliance, and delivering cost savings through strategic risk management, stakeholder engagement, and process optimisation. Expert in Agile/Hybrid delivery methodologies (PRINCE2, Scrum, Certified Project Manager - IIM), ServiceNow, and Azure ecosystems. Skilled at executive reporting, KPI tracking, and escalation management to ensure program success and strategic alignment. Exploring AI-driven automation and predictive analytics to enhance IT governance and service management outcomes.',
 ];
 
 export const aboutFacts = [
@@ -108,7 +108,7 @@ export const programmes: Programme[] = [
     category: 'IT ASSET MANAGEMENT / SOLUTION ARCHITECTURE',
     employer: 'Tata Consultancy Services',
     description:
-      "Program manager and ITAM solution architect for a global healthcare technology client. Closed out audit findings, fixed operational risks in the PC lifecycle, and put proactive controls in place. Earned a written endorsement from the client's IT leader as a \"strategic execution leader\".",
+      "Program manager and ITAM solution architect for GE HealthCare. Closed out audit findings, fixed operational risks in the PC lifecycle, and put proactive controls in place. Earned a written endorsement from GE HealthCare's IT leader as a \"strategic execution leader\".",
     tags: ['ITAM', 'PC Lifecycle', 'Audit Remediation', 'Risk Management', 'Solution Architecture'],
     metrics: [
       { label: 'BUDGET', value: '$110K' },
