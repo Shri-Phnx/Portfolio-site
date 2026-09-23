@@ -252,7 +252,7 @@ export const awards = [
 ];
 
 export const certifications = [
-  'PRINCE2 Practitioner (6th Edition)',
+  'PRINCE2 Foundation & Practitioner (6th Edition)',
   'ITIL v4 Managing Professional (MP)',
   'Agile Scrum Master (ASM)',
   'Six Sigma Green Belt',
