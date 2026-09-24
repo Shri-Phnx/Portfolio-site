@@ -22,7 +22,7 @@ export const CredentialsSection: React.FC = () => (
           transition={{ duration: 0.8 }}
           className="lg:col-span-7"
         >
-          <span className="text-[9.5px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
+          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
             // AWARDS & RECOGNITION
           </span>
           <ul className="divide-y divide-[#8C6D4F]/20 border-y border-[#8C6D4F]/20">
@@ -36,14 +36,14 @@ export const CredentialsSection: React.FC = () => (
                     {award.title}
                   </h3>
                   <span
-                    className="block text-[10.5px] font-medium tracking-[0.18em] uppercase text-[#A8988B] mt-1"
+                    className="block text-[11.5px] font-medium tracking-[0.18em] uppercase text-[#A8988B] mt-1"
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                   >
                     {award.detail}
                   </span>
                 </div>
                 {award.year && (
-                  <span className="text-[10px] font-mono tracking-[0.2em] text-[#D4AF37] pt-1.5 shrink-0">
+                  <span className="text-[11px] font-mono tracking-[0.2em] text-[#D4AF37] pt-1.5 shrink-0">
                     {award.year}
                   </span>
                 )}
@@ -60,14 +60,14 @@ export const CredentialsSection: React.FC = () => (
           transition={{ duration: 0.8, delay: 0.15 }}
           className="lg:col-span-5"
         >
-          <span className="text-[9.5px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
+          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
             // CERTIFICATIONS
           </span>
           <div className="flex flex-wrap gap-2.5">
             {certifications.map((cert) => (
               <span
                 key={cert}
-                className="px-3.5 py-2 text-[10.5px] font-medium tracking-[0.14em] uppercase rounded-sm border border-[#8C6D4F]/40 bg-[#16120E] text-[#E8D7C5] hover:border-[#D4AF37]/70 hover:text-white transition-colors"
+                className="px-3.5 py-2 text-[11.5px] font-medium tracking-[0.14em] uppercase rounded-sm border border-[#8C6D4F]/40 bg-[#16120E] text-[#E8D7C5] hover:border-[#D4AF37]/70 hover:text-white transition-colors"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {cert}

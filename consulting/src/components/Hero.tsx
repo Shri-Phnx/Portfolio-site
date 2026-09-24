@@ -18,7 +18,7 @@ const rise = (delay: number) => ({
 });
 
 export const Hero: React.FC = () => (
-  <section className="relative w-full min-h-screen overflow-hidden bg-black text-[#E8DFD8]">
+  <section className="relative w-full min-h-[100svh] overflow-hidden bg-black text-[#E8DFD8]">
     <div className="absolute inset-0 pointer-events-none">
       <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-right opacity-70">
         <source src="/videos/hero.mp4" type="video/mp4" />
@@ -29,14 +29,14 @@ export const Hero: React.FC = () => (
       <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
     </div>
 
-    <div className="relative z-10 flex flex-col min-h-screen px-6 sm:px-12 lg:px-16 pt-6 pb-12">
+    <div className="relative z-10 flex flex-col min-h-[100svh] px-6 sm:px-12 lg:px-16 pt-6 pb-12">
       <header className="flex items-center justify-between">
         <a href="#" className="text-[11px] sm:text-sm font-semibold tracking-[0.25em] sm:tracking-[0.3em] uppercase text-[#EAD8C7] mr-3" style={sans}>
           Shrinivas Ramaprasad
         </a>
         <nav className="hidden md:flex items-center gap-9 text-[11px] tracking-[0.28em] font-light text-[#C4B5A5]" style={sans}>
           {nav.map((item) => (
-            <a key={item.name} href={item.href} className="relative group py-1 hover:text-[#FFF5EB] transition-colors">
+            <a key={item.name} href={item.href} className="relative group py-2.5 hover:text-[#FFF5EB] transition-colors">
               {item.name}
               <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#D4AF37]/60 transition-all duration-300 group-hover:w-full" />
             </a>
@@ -46,7 +46,7 @@ export const Hero: React.FC = () => (
           href={profile.booking}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 whitespace-nowrap text-[10px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.24em] font-light uppercase py-2 px-3 sm:px-4 border border-[#8C6D4F]/60 hover:border-[#D4AF37] text-[#EAD8C7] transition-colors"
+          className="shrink-0 whitespace-nowrap text-[11px] sm:text-[11px] tracking-[0.2em] sm:tracking-[0.24em] font-light uppercase py-2.5 px-3 sm:px-4 border border-[#8C6D4F]/60 hover:border-[#D4AF37] text-[#EAD8C7] transition-colors"
           style={sans}
         >
           Book a call ↗
@@ -66,7 +66,7 @@ export const Hero: React.FC = () => (
         </motion.p>
         <motion.div {...rise(0.65)} className="mt-9 flex flex-wrap items-center gap-6">
           <PrimaryButton href={profile.booking}>{hero.cta}</PrimaryButton>
-          <a href="#method" className="text-[11.5px] tracking-[0.2em] uppercase text-[#A8988B] hover:text-[#E8C987] transition-colors" style={sans}>
+          <a href="#method" className="py-3 text-[11.5px] tracking-[0.2em] uppercase text-[#A8988B] hover:text-[#E8C987] transition-colors" style={sans}>
             {hero.secondary} →
           </a>
         </motion.div>

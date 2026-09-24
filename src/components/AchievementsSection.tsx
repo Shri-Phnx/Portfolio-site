@@ -34,7 +34,7 @@ export const AchievementsSection: React.FC = () => (
                 {item.value}
               </span>
               <span
-                className="text-[10.5px] font-medium tracking-[0.22em] uppercase text-[#C4B5A5]"
+                className="text-[11.5px] font-medium tracking-[0.22em] uppercase text-[#C4B5A5]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {item.label}

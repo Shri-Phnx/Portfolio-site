@@ -13,11 +13,11 @@ export const About: React.FC = () => (
         <motion.p {...fadeUp} className="text-sm sm:text-[15px] font-light text-[#B3A497] leading-[1.9]" style={sans}>
           {about.body}
         </motion.p>
-        <motion.div {...fadeUp} className="grid grid-cols-3 gap-4 mt-10 pt-6 border-t border-[#8C6D4F]/25">
+        <motion.div {...fadeUp} className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-6 border-t border-[#8C6D4F]/25">
           {about.proof.map((p) => (
-            <div key={p.label}>
-              <span className="block text-4xl text-[#D4AF37]" style={display}>{p.value}</span>
-              <span className="block text-[9.5px] sm:text-[10px] font-medium tracking-[0.18em] uppercase text-[#A8988B] mt-1" style={sans}>
+            <div key={p.label} className="flex items-baseline gap-4 sm:block">
+              <span className="block w-20 sm:w-auto shrink-0 text-4xl text-[#D4AF37]" style={display}>{p.value}</span>
+              <span className="block text-[11px] sm:text-[11px] font-medium tracking-[0.18em] uppercase text-[#A8988B] mt-1" style={sans}>
                 {p.label}
               </span>
             </div>
@@ -67,7 +67,7 @@ export const Work: React.FC = () => (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       {work.items.map((w, i) => (
         <Card key={w.client} delay={i * 0.1} className="flex flex-col">
-          <span className="text-[10.5px] font-medium tracking-[0.22em] uppercase text-[#C99E5D]" style={sans}>{w.client}</span>
+          <span className="text-[11.5px] font-medium tracking-[0.22em] uppercase text-[#C99E5D]" style={sans}>{w.client}</span>
           <h3 className="text-3xl sm:text-[2.1rem] uppercase leading-[0.95] my-4" style={display}><Accent>{w.result}</Accent></h3>
           <p className="text-sm font-light text-[#A8988B] leading-[1.8]" style={sans}>{w.text}</p>
         </Card>
@@ -112,7 +112,7 @@ export const Insights: React.FC = () => (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       {insights.items.map((item, i) => (
         <Card key={item.title} delay={i * 0.1} className="border-t-2 border-t-[#D4AF37]">
-          <span className="text-[10.5px] font-medium tracking-[0.22em] uppercase text-[#D4AF37]" style={sans}>{item.category}</span>
+          <span className="text-[11.5px] font-medium tracking-[0.22em] uppercase text-[#D4AF37]" style={sans}>{item.category}</span>
           <h3 className="text-2xl sm:text-[1.75rem] uppercase text-white leading-[1.05] my-4" style={display}>{item.title}</h3>
           <p className="text-sm font-light text-[#A8988B] leading-[1.8]" style={sans}>{item.text}</p>
         </Card>
@@ -131,7 +131,7 @@ export const Testimonials: React.FC = () =>
           <Card key={t.role + i} delay={i * 0.1}>
             <span className="block text-5xl leading-none text-[#D4AF37] mb-2" style={display}>“</span>
             <p className="text-sm font-light text-[#D5CBC0] leading-[1.85] italic" style={sans}>{t.quote}</p>
-            <span className="block mt-5 text-[10.5px] font-medium tracking-[0.2em] uppercase text-[#C99E5D]" style={sans}>{t.role}</span>
+            <span className="block mt-5 text-[11.5px] font-medium tracking-[0.2em] uppercase text-[#C99E5D]" style={sans}>{t.role}</span>
           </Card>
         ))}
       </div>
@@ -159,9 +159,9 @@ export const Footer: React.FC = () => (
         <span className="block text-xs text-[#A8988B] mt-1">{profile.tagline}</span>
       </div>
       <div className="flex flex-col gap-1.5 text-xs text-[#A8988B] md:text-right">
-        <a href={`mailto:${profile.email}`} className="hover:text-[#E8C987]">{profile.email}</a>
-        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[#E8C987]">{profile.linkedinLabel}</a>
-        <a href={profile.portfolio} target="_blank" rel="noopener noreferrer" className="hover:text-[#E8C987]">Career portfolio ↗</a>
+        <a href={`mailto:${profile.email}`} className="inline-block py-1.5 hover:text-[#E8C987]">{profile.email}</a>
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-[#E8C987]">{profile.linkedinLabel}</a>
+        <a href={profile.portfolio} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-[#E8C987]">Career portfolio ↗</a>
         <span className="text-[#6B5A48] mt-2">© {new Date().getFullYear()} {profile.name}. All rights reserved.</span>
       </div>
     </div>

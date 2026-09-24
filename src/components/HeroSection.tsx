@@ -51,7 +51,7 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black md:cursor-none">
+    <section className="relative w-full min-h-[100svh] overflow-hidden bg-black text-[#E8DFD8] font-sans selection:bg-[#cbb59d] selection:text-black md:cursor-none">
       {/* ================= 1. MINIMAL CUSTOM CURSOR ================= */}
       {cursorPos.x >= 0 && isFinePointer && (
         <motion.div
@@ -87,7 +87,7 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* ================= 4. CONTENT LAYER ================= */}
-      <div className="relative z-10 flex flex-col justify-between min-h-screen w-full px-6 sm:px-12 lg:px-16 pt-6 pb-8 pointer-events-none">
+      <div className="relative z-10 flex flex-col justify-between min-h-[100svh] w-full px-6 sm:px-12 lg:px-16 pt-6 pb-8 pointer-events-none">
         
         {/* Navigation Bar */}
         <header className="relative flex items-center justify-between w-full pointer-events-auto">
@@ -95,7 +95,7 @@ export const HeroSection: React.FC = () => {
             href="#"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
+            className="py-2.5 text-xs sm:text-sm font-semibold tracking-[0.35em] uppercase text-[#EAD8C7] hover:opacity-75 transition-opacity"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             {profile.shortName}
@@ -112,7 +112,7 @@ export const HeroSection: React.FC = () => {
                 href={item.href}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className="relative group py-1 transition-colors duration-300 hover:text-[#FFF5EB]"
+                className="relative group py-2.5 transition-colors duration-300 hover:text-[#FFF5EB]"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[#D4AF37]/50 transition-all duration-300 group-hover:w-full" />
@@ -170,7 +170,7 @@ export const HeroSection: React.FC = () => {
             {/* Subtitle Technologies */}
             <motion.div variants={fadeUpVariants} className="mb-4">
               <p
-                className="text-[10px] sm:text-[11px] md:text-xs font-normal tracking-[0.28em] uppercase text-[#C4B29E] leading-[2]"
+                className="text-[11px] sm:text-[11px] md:text-xs font-normal tracking-[0.28em] uppercase text-[#C4B29E] leading-[2]"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {profile.roles.map((role, i) => (
@@ -279,7 +279,7 @@ export const HeroSection: React.FC = () => {
                 {stat.value}
               </span>
               <span
-                className="text-[9.5px] sm:text-[10px] font-medium tracking-[0.2em] uppercase text-[#A8988B] mt-0.5"
+                className="text-[11px] sm:text-[11px] font-medium tracking-[0.2em] uppercase text-[#A8988B] mt-0.5"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
                 {stat.label}

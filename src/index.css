@@ -4,6 +4,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  overflow-x: clip; /* stops sideways sliding on iPhone Safari */
   background-color: #000;
 }
 /* Certification strip: two rows drifting in opposite directions. */
