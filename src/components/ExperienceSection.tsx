@@ -86,7 +86,7 @@ export const ExperienceSection: React.FC = () => {
               >
                 {/* Desktop Year (Left side of track) */}
                 <div className="hidden md:block w-[140px] shrink-0 pr-8 pt-0.5 text-right">
-                  <span className="text-[10px] font-mono tracking-[0.2em] text-[#8C6D4F] group-hover:text-[#D4AF37] transition-colors">
+                  <span className="text-[11px] font-mono tracking-[0.2em] text-[#8C6D4F] group-hover:text-[#D4AF37] transition-colors">
                     {stop.year}
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export const ExperienceSection: React.FC = () => {
                 <div className="ml-14 md:ml-12 pl-2">
                   {/* Mobile Year */}
                   <div className="md:hidden mb-1.5">
-                    <span className="text-[10px] font-mono tracking-[0.2em] text-[#D4AF37]">
+                    <span className="text-[11px] font-mono tracking-[0.2em] text-[#D4AF37]">
                       {stop.year}
                     </span>
                   </div>
@@ -114,7 +114,7 @@ export const ExperienceSection: React.FC = () => {
                   </h3>
                   
                   <span 
-                    className="block text-[10px] font-medium tracking-[0.2em] uppercase text-[#8C6D4F] mb-3"
+                    className="block text-[11px] font-medium tracking-[0.2em] uppercase text-[#8C6D4F] mb-3"
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                   >
                     {stop.organization}
@@ -151,7 +151,7 @@ export const ExperienceSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mt-20"
         >
-          <span className="text-[9.5px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
+          <span className="text-[11px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] block mb-5">
             // EDUCATION
           </span>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -160,7 +160,7 @@ export const ExperienceSection: React.FC = () => {
                 key={item.title}
                 className="p-6 rounded-sm border border-[#8C6D4F]/35 bg-[#100D0B]/85 hover:border-[#D4AF37]/70 transition-colors"
               >
-                <span className="block text-[10px] font-mono tracking-[0.2em] text-[#D4AF37] mb-3">
+                <span className="block text-[11px] font-mono tracking-[0.2em] text-[#D4AF37] mb-3">
                   {item.year}
                 </span>
                 <h3
@@ -170,7 +170,7 @@ export const ExperienceSection: React.FC = () => {
                   {item.title}
                 </h3>
                 <span
-                  className="block text-[10.5px] font-medium tracking-[0.16em] uppercase text-[#A8988B]"
+                  className="block text-[11.5px] font-medium tracking-[0.16em] uppercase text-[#A8988B]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   {item.org}

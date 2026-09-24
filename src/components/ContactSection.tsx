@@ -112,7 +112,7 @@ export const ContactSection: React.FC = () => {
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   <div className="min-w-0">
-                    <span className="block text-[9.5px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] mb-1.5">
+                    <span className="block text-[11px] font-mono tracking-[0.25em] uppercase text-[#8C6D4F] mb-1.5">
                       // {channel.label}
                     </span>
                     <span className="block text-[13px] sm:text-base text-[#E8DFD8] group-hover:text-[#F7E7C4] transition-colors break-words">
@@ -140,14 +140,14 @@ export const ContactSection: React.FC = () => {
 
         {/* Footer Line */}
         <div className="pt-16 mt-16 border-t border-[#8C6D4F]/15 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4">
-          <span className="text-[10px] font-mono tracking-widest text-[#8C6D4F] uppercase">
+          <span className="text-[11px] font-mono tracking-widest text-[#8C6D4F] uppercase">
             © {new Date().getFullYear()} {profile.name} • {profile.location}
           </span>
           <a
             href="https://github.com/lohithadamisetti123/cinematic-portfolio"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[10px] font-mono text-[#8C6D4F] hover:text-[#D4AF37] transition-colors"
+            className="inline-block py-2 text-[11px] font-mono text-[#8C6D4F] hover:text-[#D4AF37] transition-colors"
           >
             Design based on cinematic-portfolio by Lohitha Damisetti
           </a>

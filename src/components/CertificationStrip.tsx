@@ -31,7 +31,7 @@ const Tile: React.FC<{ badge: Badge }> = ({ badge }) => {
             {badge.short}
           </span>
           <span
-            className="block mt-1.5 text-[8.5px] font-medium tracking-[0.14em] uppercase text-[#6B5A48] leading-snug"
+            className="block mt-1.5 text-[11.5px] font-medium tracking-[0.14em] uppercase text-[#6B5A48] leading-snug"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             {badge.name}

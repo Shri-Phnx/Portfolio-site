@@ -149,7 +149,7 @@ export const AboutSection: React.FC = () => {
               {aboutFacts.map((fact) => (
                 <span
                   key={fact}
-                  className="px-3.5 py-1.5 text-[10px] font-medium tracking-[0.18em] uppercase rounded-sm border border-[#8C6D4F]/40 bg-[#16120E] text-[#E8D7C5]"
+                  className="px-3.5 py-1.5 text-[11px] font-medium tracking-[0.18em] uppercase rounded-sm border border-[#8C6D4F]/40 bg-[#16120E] text-[#E8D7C5]"
                   style={{ fontFamily: "'Montserrat', sans-serif" }}
                 >
                   {fact}
