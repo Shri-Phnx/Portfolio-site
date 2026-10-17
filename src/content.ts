@@ -12,6 +12,9 @@ export const profile = {
   whatsappDisplay: '+91 99404 62265',
   linkedin: 'https://www.linkedin.com/in/shrinivas-ramaprasad/',
   linkedinProjects: 'https://www.linkedin.com/in/shrinivas-ramaprasad/details/projects/',
+  github: 'https://github.com/Shri-Phnx',
+  // Live contribution chart (free service; hidden automatically if it fails).
+  githubChart: 'https://ghchart.rshah.org/D4AF37/Shri-Phnx',
   cvUrl: '/Shrinivas_Ramaprasad_CV.pdf',
 };
 

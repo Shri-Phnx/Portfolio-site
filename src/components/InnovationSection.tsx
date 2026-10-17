@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { SectionHeading } from './SectionHeading';
-import { innovation } from '../content';
+import { innovation, profile } from '../content';
 
 export const InnovationSection: React.FC = () => (
   <section
@@ -46,8 +46,58 @@ export const InnovationSection: React.FC = () => (
           </motion.div>
         ))}
       </div>
+
+      <GitHubActivity />
     </div>
   </section>
 );
+
+// Live GitHub contribution chart plus a profile link. If the chart service
+// is unavailable the image is hidden and the button remains.
+const GitHubActivity: React.FC = () => {
+  const [chartOk, setChartOk] = useState(true);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="mt-12 p-6 sm:p-8 rounded-sm border border-[#8C6D4F]/35 bg-[#100D0B]/85"
+    >
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${chartOk ? 'mb-6' : ''}`}>
+        <div>
+          <span className="block text-xs font-mono font-bold text-[#D4AF37] mb-2">// GITHUB ACTIVITY</span>
+          <h3
+            className="text-2xl sm:text-3xl tracking-wide text-white leading-none"
+            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+          >
+            BUILDING IN PUBLIC
+          </h3>
+        </div>
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="self-start sm:self-auto inline-flex items-center gap-3 px-6 py-3.5 border border-[#8C6D4F] bg-[#16120E] hover:border-[#D4AF37] hover:bg-[#D4AF37] text-[#EAD8C7] hover:text-black text-[11px] font-medium tracking-[0.24em] uppercase transition-all duration-300"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+        >
+          <span>VIEW MY GITHUB</span>
+          <span className="text-xs">↗</span>
+        </a>
+      </div>
+      {chartOk && (
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" className="block rounded-sm bg-white p-3 sm:p-4 overflow-x-auto">
+          <img
+            src={profile.githubChart}
+            alt="GitHub contribution chart for the past year"
+            loading="lazy"
+            onError={() => setChartOk(false)}
+            className="block min-w-[640px] w-full h-auto"
+          />
+        </a>
+      )}
+    </motion.div>
+  );
+};
 
 export default InnovationSection;
