@@ -82,6 +82,12 @@ export const ContactSection: React.FC = () => {
               >
                 Hiring for a Program Manager, Service Delivery or IT Asset Management role in India or the GCC? I'm available to join in 1–2 months. Pick whichever channel suits you.
               </p>
+              <p
+                className="mt-4 text-xs sm:text-[13px] font-light text-[#A8988B] leading-relaxed max-w-md"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                Valid Indian passport and ready to relocate. Identity and certification documents are shared on request during the hiring process.
+              </p>
             </div>
           </div>
 
