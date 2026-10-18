@@ -59,45 +59,44 @@ type Day = { date: string; count: number; level: number };
 // GitHub's own dark-theme greens for the five activity levels (0 = none, 4 = busiest).
 const levelColours = ['#161B22', '#0E4429', '#006D32', '#26A641', '#39D353'];
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const thisYear = new Date().getFullYear();
-const years = [thisYear, thisYear - 1, thisYear - 2];
 const CELL = 11;
 const GAP = 3;
 
-// A copy of GitHub's contribution calendar, one calendar year at a time. Falls back
+// A copy of GitHub's contribution calendar: lifetime total in the heading, last 12
+// months in the grid. Falls back
 // to the ghchart image if the data service is down, and hides itself if both fail.
 const GitHubActivity: React.FC = () => {
-  const [year, setYear] = useState(thisYear);
+  const [sinceYear, setSinceYear] = useState('');
   const [weeks, setWeeks] = useState<(Day | null)[][] | null>(null);
   const [total, setTotal] = useState(0);
   const [mode, setMode] = useState<'loading' | 'grid' | 'image' | 'none'>('loading');
   const scroller = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch(`${profile.githubData}?y=${year}`)
+    fetch(`${profile.githubData}?y=all`)
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((data: { total: Record<string, number>; contributions: Day[] }) => {
-        const days = data.contributions;
-        if (!days?.length) throw new Error('no data');
+        // The service lists years newest first, so sort, then keep the 53 weeks up to today.
+        const today = new Date().toISOString().slice(0, 10);
+        const all = [...data.contributions].sort((a, b) => a.date.localeCompare(b.date));
+        const days = all.filter((d) => d.date <= today).slice(-365);
+        if (!days.length) throw new Error('no data');
         // Pad the first week so each column runs Sunday to Saturday.
         const cells: (Day | null)[] = [...Array(new Date(days[0].date).getUTCDay()).fill(null), ...days];
         const cols: (Day | null)[][] = [];
         for (let i = 0; i < cells.length; i += 7) cols.push(cells.slice(i, i + 7));
         setWeeks(cols);
-        setTotal(data.total?.[year] ?? days.reduce((sum, d) => sum + d.count, 0));
+        const active = Object.keys(data.total).filter((y) => data.total[y] > 0).sort();
+        setTotal(Object.values(data.total).reduce((sum, n) => sum + n, 0));
+        setSinceYear(active[0] ?? '');
         setMode('grid');
       })
-      .catch(() => setMode((m) => (m === 'grid' ? 'grid' : 'image')));
-  }, [year]);
+      .catch(() => setMode('image'));
+  }, []);
 
-  // On narrow screens, open on the current week (or the year's end for past years).
+  // On narrow screens, open on the most recent weeks.
   useEffect(() => {
-    const el = scroller.current;
-    if (!el || !weeks) return;
-    const today = new Date().toISOString().slice(0, 10);
-    const idx = weeks.findIndex((w) => w.some((d) => d?.date === today));
-    const col = idx === -1 ? weeks.length : idx + 1;
-    el.scrollLeft = 32 + col * (CELL + GAP) - el.clientWidth + 16;
+    if (scroller.current && weeks) scroller.current.scrollLeft = scroller.current.scrollWidth;
   }, [weeks]);
 
   // Label a month above the week column that holds its 1st day.
@@ -140,10 +139,10 @@ const GitHubActivity: React.FC = () => {
       </div>
 
       {mode === 'grid' && weeks && (
-        <div className="rounded-md bg-[#0D1117] p-4 sm:p-6 flex flex-col-reverse lg:flex-row gap-5 lg:gap-6" style={sans}>
-          <div className="min-w-0 flex-1">
+        <div className="rounded-md bg-[#0D1117] p-4 sm:p-6" style={sans}>
+          <div className="min-w-0">
             <h4 className="text-base sm:text-lg text-[#E6EDF3] mb-3">
-              {total.toLocaleString('en-GB')} contributions in {year}
+              {total.toLocaleString('en-GB')} contributions{sinceYear && ` since ${sinceYear}`}
             </h4>
             <div className="rounded-md border border-[#30363D] py-3 sm:py-4">
               <div ref={scroller} className="overflow-x-auto px-3 sm:px-4">
@@ -197,20 +196,6 @@ const GitHubActivity: React.FC = () => {
                 </span>
               </div>
             </div>
-          </div>
-          <div className="flex lg:flex-col gap-2 lg:w-40 lg:pt-10">
-            {years.map((y) => (
-              <button
-                key={y}
-                type="button"
-                onClick={() => setYear(y)}
-                className={`px-4 py-2 lg:py-2.5 rounded-md text-left text-sm transition-colors ${
-                  y === year ? 'bg-[#1F6FEB] text-white' : 'text-[#8B949E] hover:bg-[#161B22] hover:text-[#E6EDF3]'
-                }`}
-              >
-                {y}
-              </button>
-            ))}
           </div>
         </div>
       )}
