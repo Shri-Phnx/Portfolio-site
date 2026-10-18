@@ -14,8 +14,8 @@ export const profile = {
   linkedinProjects: 'https://www.linkedin.com/in/shrinivas-ramaprasad/details/projects/',
   github: 'https://github.com/Shri-Phnx',
   // Live contribution chart (free service; hidden automatically if it fails).
-  githubChart: 'https://ghchart.rshah.org/D4AF37/Shri-Phnx',
-  githubData: 'https://github-contributions-api.jogruber.de/v4/Shri-Phnx?y=last',
+  githubChart: 'https://ghchart.rshah.org/Shri-Phnx',
+  githubData: 'https://github-contributions-api.jogruber.de/v4/Shri-Phnx',
   cvUrl: '/Shrinivas_Ramaprasad_CV.pdf',
 };
 
