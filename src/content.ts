@@ -40,6 +40,7 @@ export const summary = [
 export const aboutFacts = [
   'Based in Dubai, UAE',
   'Open to India & GCC',
+  'Valid Indian passport · Ready to relocate',
   'Available in 1–2 months',
   'Tamil · Telugu · English · Hindi',
 ];
