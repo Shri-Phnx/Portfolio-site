@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Installs (or updates) both sites on a VPS where Docker + Traefik already own
+# Installs (or updates) all three sites on a VPS where Docker + Traefik already own
 # ports 80/443 (e.g. Hostinger's n8n template):
 #   shrinivasramaprasad.site             -> portfolio (repo root)
 #   consultant.shrinivasramaprasad.site  -> consulting site (consulting/)
+#   dhs.shrinivasramaprasad.site         -> Digital Hardware Services (dhs/, plain static files)
 #
 # It does NOT touch Traefik or n8n. Each site runs in its own small web-server
 # container, labelled so the existing Traefik routes the domain to it and
@@ -22,6 +23,9 @@ WEB_ROOT="/opt/portfolio-site-www"
 NAME="portfolio-site"
 CONSULT_WEB_ROOT="/opt/consulting-site-www"
 CONSULT_NAME="consulting-site"
+DHS_DOMAIN="dhs.${DOMAIN}"
+DHS_WEB_ROOT="/opt/dhs-site-www"
+DHS_NAME="dhs-site"
 
 say()  { printf '\n\033[1;33m==> %s\033[0m\n' "$*"; }
 ok()   { printf '\033[1;32m    OK: %s\033[0m\n' "$*"; }
@@ -75,6 +79,11 @@ build . "$WEB_ROOT"
 ok "Portfolio built (version $(git -C "$SRC_DIR" rev-parse --short HEAD))"
 build consulting "$CONSULT_WEB_ROOT"
 ok "Consulting site built"
+# The DHS site is plain HTML, CSS and JavaScript. There is nothing to build, so copy it as it is.
+mkdir -p "$DHS_WEB_ROOT"
+find "$DHS_WEB_ROOT" -mindepth 1 -delete
+cp -a "${SRC_DIR}/dhs/." "$DHS_WEB_ROOT/"
+ok "DHS site copied"
 
 # ----------------------------------------------------- 3. web containers
 say "Step 3/5: Starting the site containers"
@@ -107,11 +116,12 @@ start_site() {  # $1 = container, $2 = Traefik router name, $3 = Host rule, $4 =
 }
 start_site "$NAME" portfolio "Host(\`${DOMAIN}\`) || Host(\`www.${DOMAIN}\`)" "$WEB_ROOT"
 start_site "$CONSULT_NAME" consulting "Host(\`${CONSULT_DOMAIN}\`)" "$CONSULT_WEB_ROOT"
+start_site "$DHS_NAME" dhs "Host(\`${DHS_DOMAIN}\`)" "$DHS_WEB_ROOT"
 
 # ---------------------------------------------------- 4. local routing test
 say "Step 4/5: Testing that Traefik routes each domain to its site"
 sleep 5
-for host in "$DOMAIN" "$CONSULT_DOMAIN"; do
+for host in "$DOMAIN" "$CONSULT_DOMAIN" "$DHS_DOMAIN"; do
   code="$(curl -sk -o /dev/null -w '%{http_code}' --resolve "${host}:443:127.0.0.1" "https://${host}/" || true)"
   if [ "$code" = "200" ]; then
     ok "Traefik serves ${host} (HTTP ${code})"
@@ -125,14 +135,14 @@ docker ps --format '    running: {{.Names}} ({{.Image}})'
 say "Step 5/5: Checking the domains and HTTPS"
 resolve() { curl -s "https://dns.google/resolve?name=$1&type=A" | grep -oE '"data":"[0-9.]+"' | cut -d'"' -f4 | head -1 || true; }
 pending=""
-for host in "$DOMAIN" "www.$DOMAIN" "$CONSULT_DOMAIN"; do
+for host in "$DOMAIN" "www.$DOMAIN" "$CONSULT_DOMAIN" "$DHS_DOMAIN"; do
   ip="$(resolve "$host")"
   printf '    %-40s -> %s\n' "$host" "${ip:-not set yet}"
   [ "$ip" = "$SERVER_IP" ] || pending="${pending} ${host}"
 done
 if [ -z "$pending" ]; then
-  printf '\n\033[1;32mDONE. Both sites are live (HTTPS certificates can take up to 2 minutes):\n'
-  printf '  https://%s\n  https://%s\033[0m\n' "$DOMAIN" "$CONSULT_DOMAIN"
+  printf '\n\033[1;32mDONE. All sites are live (HTTPS certificates can take up to 2 minutes):\n'
+  printf '  https://%s\n  https://%s\n  https://%s\033[0m\n' "$DOMAIN" "$CONSULT_DOMAIN" "$DHS_DOMAIN"
 else
   printf '\n\033[1;33mALMOST DONE. The sites are running, but these names do not point here yet:%s\n' "$pending"
   printf 'Add or fix their A records in Namecheap (value %s). Nothing else to run:\n' "$SERVER_IP"
