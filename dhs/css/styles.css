@@ -431,3 +431,24 @@ body { padding-bottom: 5rem; }
 @media (hover: none) { .rv:hover { transform: none; } }
 
 .rv__note { font-style: normal; color: var(--gold-hi); font-weight: 600; }
+
+/* ---------- Reviews slider (overrides the grid above) ---------- */
+.rvs { display: flex; gap: 1.1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: .5rem .25rem 1rem; margin-inline: -.25rem; }
+.rvs::-webkit-scrollbar { display: none; }
+.rvs:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 4px; border-radius: var(--radius); }
+.rv { flex: 0 0 88%; scroll-snap-align: start; }
+@media (min-width: 640px) { .rv { flex-basis: calc((100% - 1.1rem) / 2); } }
+@media (min-width: 980px) { .rvs { gap: 1.25rem; } .rv { flex-basis: calc((100% - 2.5rem) / 3); } }
+.rv__avatar--0 { background: #5b4a3a; } .rv__avatar--1 { background: #1f5f9e; } .rv__avatar--2 { background: #1d5a46; }
+.rv__avatar--3 { background: #6a3f8f; } .rv__avatar--4 { background: #8a3b4a; } .rv__avatar--5 { background: #2f6b78; }
+.rvs-ctl { display: flex; align-items: center; justify-content: center; gap: .9rem; margin-top: .6rem; flex-wrap: wrap; }
+.rvs-btn { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(255,255,255,.04); color: var(--warm); cursor: pointer; display: grid; place-items: center; transition: border-color .2s, background .2s; }
+.rvs-btn:hover { border-color: var(--gold); background: rgba(205,170,104,.1); }
+.rvs-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.rvs-dots { display: flex; gap: .3rem; align-items: center; }
+.rvs-dot { width: 24px; height: 24px; border: 0; background: none; cursor: pointer; display: grid; place-items: center; padding: 0; }
+.rvs-dot::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: rgba(183,192,207,.4); transition: background .25s, transform .25s; }
+.rvs-dot[aria-current="true"]::before { background: var(--gold); transform: scale(1.35); box-shadow: 0 0 8px rgba(236,214,153,.6); }
+.rvs-pause { min-height: 44px; padding: 0 1rem; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--steel); font: 600 .85rem var(--font-body); cursor: pointer; }
+.rvs-pause:hover { color: var(--warm); border-color: var(--gold); }
+@media (prefers-reduced-motion: reduce) { .rvs { scroll-behavior: auto; } }
