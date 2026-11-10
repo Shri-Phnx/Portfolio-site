@@ -429,3 +429,5 @@ body { padding-bottom: 5rem; }
 @media (min-width: 640px) { .rvs { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 980px) { .rvs { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
 @media (hover: none) { .rv:hover { transform: none; } }
+
+.rv__note { font-style: normal; color: var(--gold-hi); font-weight: 600; }
