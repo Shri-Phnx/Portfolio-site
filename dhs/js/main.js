@@ -137,3 +137,80 @@
     });
   });
 })();
+
+/* Reviews slider: native scroll-snap (swipe works on touch), plus arrows, dots and a gentle auto-slide. */
+(function () {
+  'use strict';
+  var root = document.querySelector('[data-carousel]');
+  if (!root) return;
+  var track = root.querySelector('.rvs');
+  var cards = [].slice.call(track.children);
+  var prev = root.querySelector('[data-prev]'), next = root.querySelector('[data-next]');
+  var dotsBox = root.querySelector('.rvs-dots'), pauseBtn = root.querySelector('[data-pause]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var paused = reduce, hover = false, focusIn = false, inView = true, timer = null, raf = 0, dots = [];
+
+  function gap() { var cs = getComputedStyle(track); return parseFloat(cs.columnGap || cs.gap) || 0; }
+  function step() { return cards[0].getBoundingClientRect().width + gap(); }
+  function perView() { return Math.max(1, Math.round((track.clientWidth + gap()) / step())); }
+  function maxIndex() { return Math.max(0, cards.length - perView()); }
+  function index() { return Math.round(track.scrollLeft / step()); }
+  function atEnd() { return track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; }
+  function go(i) {
+    i = Math.max(0, Math.min(i, maxIndex()));
+    track.scrollTo({ left: i * step(), behavior: reduce ? 'auto' : 'smooth' });
+  }
+  function pages() { return Math.ceil(cards.length / perView()); }
+  function buildDots() {
+    dotsBox.innerHTML = ''; dots = [];
+    for (var p = 0; p < pages(); p++) {
+      (function (p) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'rvs-dot';
+        b.setAttribute('aria-label', 'Show reviews group ' + (p + 1) + ' of ' + pages());
+        b.addEventListener('click', function () { go(p * perView()); });
+        dotsBox.appendChild(b); dots.push(b);
+      })(p);
+    }
+    mark();
+  }
+  function mark() {
+    raf = 0;
+    var active = atEnd() ? dots.length - 1 : Math.min(dots.length - 1, Math.round(index() / perView()));
+    dots.forEach(function (d, i) { if (i === active) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+  }
+  function advance() { if (atEnd()) go(0); else go(index() + 1); }
+  function sync() {
+    var run = !paused && !hover && !focusIn && inView && !document.hidden;
+    if (run && !timer) timer = setInterval(advance, 6000);
+    if (!run && timer) { clearInterval(timer); timer = null; }
+  }
+  function setPaused(v) {
+    paused = v;
+    pauseBtn.textContent = v ? 'Play' : 'Pause';
+    pauseBtn.setAttribute('aria-label', v ? 'Start automatic sliding' : 'Pause automatic sliding');
+    sync();
+  }
+
+  prev.addEventListener('click', function () { if (index() <= 0) go(maxIndex()); else go(index() - perView()); });
+  next.addEventListener('click', function () { if (atEnd()) go(0); else go(index() + perView()); });
+  pauseBtn.addEventListener('click', function () { setPaused(!paused); });
+  track.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(mark); }, { passive: true });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+  });
+  root.addEventListener('mouseenter', function () { hover = true; sync(); });
+  root.addEventListener('mouseleave', function () { hover = false; sync(); });
+  root.addEventListener('focusin', function () { focusIn = true; sync(); });
+  root.addEventListener('focusout', function () { focusIn = false; sync(); });
+  root.addEventListener('touchstart', function () { hover = true; sync(); }, { passive: true });
+  root.addEventListener('touchend', function () { setTimeout(function () { hover = false; sync(); }, 8000); }, { passive: true });
+  document.addEventListener('visibilitychange', sync);
+  window.addEventListener('resize', buildDots);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { inView = en[0].isIntersecting; sync(); }, { threshold: 0.25 }).observe(root);
+  }
+  setPaused(reduce);
+  buildDots();
+})();
